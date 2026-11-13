@@ -10,7 +10,10 @@ from pathlib import Path
 
 
 PROJECT_PATH = Path(__file__).resolve().parent
-MAGE_URL = "http://localhost:6789"
+MAGE_HOST = "localhost"
+MAGE_PORT = 6789
+MAGE_URL = f"http://{MAGE_HOST}:{MAGE_PORT}"
+PIPELINE_URL = f"{MAGE_URL}/pipelines/iris_classifier"
 STARTUP_TIMEOUT_SECONDS = 60
 
 
@@ -62,15 +65,15 @@ def main() -> None:
             "start",
             str(PROJECT_PATH),
             "--host",
-            "localhost",
+            MAGE_HOST,
             "--port",
-            "6789",
+            str(MAGE_PORT),
         ]
         process = subprocess.Popen(command, cwd=PROJECT_PATH)
         _wait_for_mage(process)
 
-    if not webbrowser.open(MAGE_URL):
-        print(f"Mage is running. Open {MAGE_URL} in your browser.")
+    if not webbrowser.open(PIPELINE_URL):
+        print(f"Mage is running. Open {PIPELINE_URL} in your browser.")
 
 
 if __name__ == "__main__":
