@@ -22,4 +22,6 @@ def evaluate(df, *args, **kwargs):
             round(f1_score(y_true, y_pred, average='macro'), 3),
         ]
     })
+    print('ML metrics:')
+    print(metrics.to_string(index=False))
     return metrics
