@@ -188,3 +188,5 @@ Werkzeug==3.0.3
 widgetsnbextension==4.0.16
 wrapt==2.5.2
 yarl==1.25.1
+pika
+python-dotenv
